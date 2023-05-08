@@ -14,6 +14,8 @@
 		04E05BFE2A08AB8B00533FE6 /* ArtBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04E05BFC2A08AB8B00533FE6 /* ArtBook.xcdatamodeld */; };
 		04E05C002A08AB8E00533FE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E05BFF2A08AB8E00533FE6 /* Assets.xcassets */; };
 		04E05C032A08AB8E00533FE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E05C012A08AB8E00533FE6 /* LaunchScreen.storyboard */; };
+		04E05C0D2A08B62900533FE6 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E05C0C2A08B62900533FE6 /* TableViewController.swift */; };
+		04E05C0F2A08B83E00533FE6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E05C0E2A08B83E00533FE6 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		04E05BFF2A08AB8E00533FE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E05C022A08AB8E00533FE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04E05C042A08AB8E00533FE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E05C0C2A08B62900533FE6 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		04E05C0E2A08B83E00533FE6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				04E05BF32A08AB8B00533FE6 /* AppDelegate.swift */,
 				04E05BF52A08AB8B00533FE6 /* SceneDelegate.swift */,
 				04E05BF72A08AB8B00533FE6 /* ViewController.swift */,
+				04E05C0C2A08B62900533FE6 /* TableViewController.swift */,
+				04E05C0E2A08B83E00533FE6 /* TableViewCell.swift */,
 				04E05BF92A08AB8B00533FE6 /* Main.storyboard */,
 				04E05BFF2A08AB8E00533FE6 /* Assets.xcassets */,
 				04E05C012A08AB8E00533FE6 /* LaunchScreen.storyboard */,
@@ -144,6 +150,8 @@
 				04E05BF82A08AB8B00533FE6 /* ViewController.swift in Sources */,
 				04E05BF42A08AB8B00533FE6 /* AppDelegate.swift in Sources */,
 				04E05BFE2A08AB8B00533FE6 /* ArtBook.xcdatamodeld in Sources */,
+				04E05C0F2A08B83E00533FE6 /* TableViewCell.swift in Sources */,
+				04E05C0D2A08B62900533FE6 /* TableViewController.swift in Sources */,
 				04E05BF62A08AB8B00533FE6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
