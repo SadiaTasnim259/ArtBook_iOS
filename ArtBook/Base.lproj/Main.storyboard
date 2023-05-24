@@ -11,55 +11,73 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ArtBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="ArtBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="203-W8-9R7">
-                                <rect key="frame" x="71" y="123" width="251" height="250"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_image" translatesAutoresizingMaskIntoConstraints="NO" id="203-W8-9R7">
+                                <rect key="frame" x="71" y="123" width="249" height="207"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="207" id="T8y-QR-KZh"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NM9-We-GsM" appends="YES" id="4NY-UA-ZNR"/>
+                                </connections>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publish Year:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-qU-J2E">
-                                <rect key="frame" x="39" y="485" width="320" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="yTe-Ck-Dkm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-hd-cxS">
-                                <rect key="frame" x="39" y="552" width="320" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="oGP-Da-53J"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Art Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2OD-Fn-wpr">
-                                <rect key="frame" x="39" y="415" width="320" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Eze-F9-UVj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoU-yT-J8h">
+                                <rect key="frame" x="166" y="661.66666666666663" width="61" height="34.333333333333371"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cZu-sz-zxi"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-lO-FQe">
+                                <rect key="frame" x="20" y="397.66666666666669" width="353" height="166.00000000000006"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Art Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2OD-Fn-wpr">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="PBJ-r4-oRh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publish Year:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-qU-J2E">
+                                        <rect key="frame" x="0.0" y="63" width="353" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Mgj-8t-46Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-hd-cxS">
+                                        <rect key="frame" x="0.0" y="125.99999999999994" width="353" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="gGF-jy-kRI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2OD-Fn-wpr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="Crw-1z-6AB"/>
-                            <constraint firstItem="203-W8-9R7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="JXG-Vq-ktd"/>
-                            <constraint firstItem="203-W8-9R7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="71" id="Le1-fd-cYg"/>
-                            <constraint firstItem="BiA-qU-J2E" firstAttribute="top" secondItem="2OD-Fn-wpr" secondAttribute="bottom" constant="25" id="Nxu-kg-E6z"/>
-                            <constraint firstItem="2OD-Fn-wpr" firstAttribute="leading" secondItem="BiA-qU-J2E" secondAttribute="leading" id="YHE-PX-mNW"/>
-                            <constraint firstItem="BiA-qU-J2E" firstAttribute="trailing" secondItem="bX5-hd-cxS" secondAttribute="trailing" id="e0X-qw-Zg7"/>
-                            <constraint firstItem="2OD-Fn-wpr" firstAttribute="trailing" secondItem="BiA-qU-J2E" secondAttribute="trailing" id="fdi-td-d3B"/>
-                            <constraint firstItem="bX5-hd-cxS" firstAttribute="top" secondItem="BiA-qU-J2E" secondAttribute="bottom" constant="22" id="h6A-as-ast"/>
-                            <constraint firstItem="BiA-qU-J2E" firstAttribute="leading" secondItem="bX5-hd-cxS" secondAttribute="leading" id="iIe-U5-awK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2OD-Fn-wpr" secondAttribute="trailing" constant="34" id="mQu-R4-bGN"/>
-                            <constraint firstItem="203-W8-9R7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t0X-gN-dOa"/>
-                            <constraint firstItem="2OD-Fn-wpr" firstAttribute="top" secondItem="203-W8-9R7" secondAttribute="bottom" constant="42" id="tos-1a-8h1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bX5-hd-cxS" secondAttribute="bottom" constant="221" id="uSN-Hl-7xu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="203-W8-9R7" secondAttribute="trailing" constant="73" id="5xI-rT-cnw"/>
+                            <constraint firstItem="uyb-lO-FQe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9i6-eK-cAe"/>
+                            <constraint firstItem="203-W8-9R7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Df2-jg-7DI"/>
+                            <constraint firstItem="uyb-lO-FQe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GNf-T7-eud"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uyb-lO-FQe" secondAttribute="trailing" constant="20" id="Rp2-aa-57c"/>
+                            <constraint firstItem="LoU-yT-J8h" firstAttribute="top" secondItem="uyb-lO-FQe" secondAttribute="bottom" constant="98" id="S3T-VL-aMc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LoU-yT-J8h" secondAttribute="bottom" constant="122" id="mMd-3E-XiJ"/>
+                            <constraint firstItem="203-W8-9R7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="71" id="qJq-Sz-GdZ"/>
+                            <constraint firstItem="LoU-yT-J8h" firstAttribute="centerX" secondItem="uyb-lO-FQe" secondAttribute="centerX" id="rhm-vB-oJY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p5W-rP-u8i"/>
@@ -71,6 +89,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NM9-We-GsM">
+                    <connections>
+                        <action selector="selectImagePressed:" destination="BYZ-38-t0r" id="5OX-qA-WgA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1290.8396946564885" y="-46.478873239436624"/>
         </scene>
@@ -152,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTS-tL-qH6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="417.55725190839695" y="-46.478873239436624"/>
+            <point key="canvasLocation" x="473" y="-46"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AeC-wm-MZ3">
@@ -170,11 +193,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRe-AY-p7x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-419" y="-46"/>
+            <point key="canvasLocation" x="-361" y="-46"/>
         </scene>
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="select_image" width="251" height="250"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
