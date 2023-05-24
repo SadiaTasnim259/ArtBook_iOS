@@ -15,6 +15,7 @@ class TableViewController: UIViewController {
     var nameArray = [String]()
     var idArray = [UUID]()
     var yearArray = [String]()
+    var imageArray = [Data]()
     //na bujha
     var selectedPainting = ""
     var selectedPantingId: UUID?
@@ -27,9 +28,18 @@ class TableViewController: UIViewController {
         
         getData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+            NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: "newData"), object: nil)
+        }
+        
     
     //get data
-    func getData(){
+    @objc func getData(){
+        nameArray.removeAll(keepingCapacity: false)
+        idArray.removeAll(keepingCapacity: false)
+        yearArray.removeAll(keepingCapacity: false)
+        imageArray.removeAll(keepingCapacity: false)
+                
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
@@ -53,9 +63,14 @@ class TableViewController: UIViewController {
                     if let year = result.value(forKey: "year") as? String{
                         self.yearArray .append(year)
                     }
+                    
+                    if let imageData = result.value(forKey: "image") as? Data{
+                        self.imageArray.append(imageData)
+                    }
+                    
+                    self.tableView.reloadData()
                 }
                 
-                self.tableView.reloadData()
             }
             
         }catch{
@@ -64,37 +79,37 @@ class TableViewController: UIViewController {
     }
     
     
-    //get data
-    func getDataByObject(){
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<Paintings>(entityName: "Paintings")
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do{
-            let results = try context.fetch(fetchRequest)
-            
-            for result in results{
-                
-                if let name = result.name {
-                    self.nameArray.append(name)
-                }
-                 
-                if let id = result.id{
-                    self.idArray.append(id)
-                }
-                
-                if let year = result.year{
-                    self.yearArray.append(year)
-                }
-            }
-            
-            self.tableView.reloadData()
-        }catch{
-            print("Fetch Error in GetDataByObject: \(error.localizedDescription)")
-        }
-    }
+//    //get data
+//    func getDataByObject(){
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext
+//        
+//        let fetchRequest = NSFetchRequest<Paintings>(entityName: "Paintings")
+//        fetchRequest.returnsObjectsAsFaults = false
+//        
+//        do{
+//            let results = try context.fetch(fetchRequest)
+//            
+//            for result in results{
+//                
+//                if let name = result.name {
+//                    self.nameArray.append(name)
+//                }
+//                 
+//                if let id = result.id{
+//                    self.idArray.append(id)
+//                }
+//                
+//                if let year = result.year{
+//                    self.yearArray.append(year)
+//                }
+//            }
+//            
+//            self.tableView.reloadData()
+//        }catch{
+//            print("Fetch Error in GetDataByObject: \(error.localizedDescription)")
+//        }
+//    }
     
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -120,6 +135,9 @@ extension TableViewController: UITableViewDataSource{
         
         cell.artNameLabel.text = nameArray[indexPath.row]
         cell.yearLabel.text = yearArray[indexPath.row]
+        
+        let image = UIImage(data: imageArray[indexPath.row])
+        cell.artImageView.image = image
         
         return cell
     }

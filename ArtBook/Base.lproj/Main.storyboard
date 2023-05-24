@@ -86,6 +86,7 @@
                         <outlet property="artistYearField" destination="bX5-hd-cxS" id="tPg-Ch-zQH"/>
                         <outlet property="imageView" destination="203-W8-9R7" id="S5c-oF-rPj"/>
                         <outlet property="publishYearField" destination="BiA-qU-J2E" id="uTV-ih-mqY"/>
+                        <outlet property="saveButton" destination="LoU-yT-J8h" id="eTZ-xB-0Es"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

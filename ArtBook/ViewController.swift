@@ -14,6 +14,10 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
     @IBOutlet weak var artNameField: UITextField!
     @IBOutlet weak var publishYearField: UITextField!
     @IBOutlet weak var artistYearField: UITextField!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    var forUpdate = false
+    
     //na bujha
     var chosenPainting = ""
     var chosenPaintingId : UUID?
@@ -23,6 +27,10 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         
         //na bujha
         if chosenPainting != "" {
+            
+            forUpdate = true
+            //saveButton.isHidden = true
+            saveButton.setTitle("Update", for: .normal)
             // Core Data
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -60,6 +68,10 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
             }
             
         }else{
+            forUpdate = false
+            
+            saveButton.isHidden = false
+            saveButton.isEnabled = false
             artNameField.text = ""
             publishYearField.text = ""
             artistYearField.text = ""
@@ -85,11 +97,59 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        saveButton.isEnabled = true
             self.dismiss(animated: true)
         }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         
+        if forUpdate{
+            updatePainting()
+        }else{
+            savePainting()
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name("newData"), object: nil)
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    func updatePainting() {
+        //store data
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        // Assuming you have the "id" of the item you want to update stored in a variable called "itemId"
+
+        // Fetch the existing item
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
+        
+        guard let chosenPaintingId else { return  }
+        
+        fetchRequest.predicate = NSPredicate(format: "id == %@", chosenPaintingId.uuidString)
+
+        do {
+            let fetchResults = try context.fetch(fetchRequest)
+            if let existingPainting = fetchResults.first as? NSManagedObject {
+                // Update the attributes of the existing item
+                existingPainting.setValue(artNameField.text, forKey: "name")
+                existingPainting.setValue(publishYearField.text, forKey: "year")
+                existingPainting.setValue(artistYearField.text, forKey: "artist")
+                // Note: You may choose not to update the "id" attribute since it's typically a unique identifier.
+
+                let imageData = imageView.image!.jpegData(compressionQuality: 0.5)
+                existingPainting.setValue(imageData, forKey: "image")
+                
+                // Save the changes to the context
+                try context.save()
+                print("Update")
+            }
+        } catch {
+            print("Error fetching or updating the item: \(error)")
+        }
+
+    }
+    
+    func savePainting(){
         //store data
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -112,9 +172,6 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         }catch{
             print("Error")
         }
-        
-        self.navigationController?.popViewController(animated: true)
-        
     }
 }
 
